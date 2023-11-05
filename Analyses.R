@@ -639,7 +639,6 @@ h6_a <- ggplot(data = All_data) +
   geom_point(mapping = aes(x = SCI, y = Evening_PANAS_neg), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = SCI, y = Evening_PANAS_neg))+
   labs(x = "Sleep Condition Indicator", y = "Negative affect (PANAS)") +
-  ggtitle("A")+
   ggtitle("a")+
   theme_ggeffects()
 
