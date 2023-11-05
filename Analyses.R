@@ -640,6 +640,7 @@ h6_a <- ggplot(data = All_data) +
   geom_smooth(method = lm, formula = y~x, aes(x = SCI, y = Evening_PANAS_neg))+
   labs(x = "Sleep Condition Indicator", y = "Negative affect (PANAS)") +
   ggtitle("A")+
+  ggtitle("a")+
   theme_ggeffects()
 
 
@@ -661,7 +662,7 @@ h6_b <- ggplot(data = All_data) +
   geom_point(mapping = aes(x = Typical_sleep_duration, y = Evening_PANAS_neg), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = Typical_sleep_duration, y = Evening_PANAS_neg))+
   labs(x = "Habitual sleep duration (min)", y = "Negative affect (PANAS)") +
-  ggtitle("B")+
+  ggtitle("b")+
   theme_ggeffects()
 
 # Crude model
@@ -679,7 +680,7 @@ h6_c <- ggplot(data = All_data) +
   geom_point(mapping = aes(x = Typical_sleep_efficiency, y = Evening_PANAS_neg), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = Typical_sleep_efficiency, y = Evening_PANAS_neg))+
   labs(x = "Habitual sleep efficiency", y = "Negative affect (PANAS)") +
-  ggtitle("C")+
+  ggtitle("c")+
   theme_ggeffects()
 
 # Crude model
@@ -699,7 +700,7 @@ h6_d <- ggplot(data = All_data) +
   geom_point(mapping = aes(x = SCI, y = Evening_PANAS_pos), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = SCI, y = Evening_PANAS_pos))+
   labs(x = "Sleep Condition Indicator", y = "Positive affect (PANAS)") +
-  ggtitle("D")+
+  ggtitle("d")+
   theme_ggeffects()
 
 
@@ -721,7 +722,7 @@ h6_e <- ggplot(data = All_data) +
   geom_point(mapping = aes(x = Typical_sleep_duration, y = Evening_PANAS_pos), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = Typical_sleep_duration, y = Evening_PANAS_pos))+
   labs(x = "Habitual sleep duration (min)", y = "Positive affect (PANAS)") +
-  ggtitle("E")+
+  ggtitle("e")+
   theme_ggeffects()
 
 # Crude model
@@ -739,7 +740,7 @@ h6_f <- ggplot(data = All_data) +
   geom_point(mapping = aes(x = Typical_sleep_efficiency, y = Evening_PANAS_pos), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = Typical_sleep_efficiency, y = Evening_PANAS_pos))+
   labs(x = "Habitual sleep efficiency", y = "Positive affect (PANAS)") +
-  ggtitle("F")+
+  ggtitle("f")+
   theme_ggeffects()
 
 # Crude model
@@ -773,7 +774,7 @@ Morning_PANAS_data <- subset(All_data, !is.na(All_data$Morning_PANAS_pos))
 h7_a <- ggplot(data = Morning_PANAS_data) +
   geom_boxplot(mapping = aes(x = Sleep_quality_last_night, y = Morning_PANAS_neg), size = 1)+
   labs(x = "Sleep quality last night", y = "Negative affect (PANAS)") +
-  ggtitle("A")+
+  ggtitle("a")+
   theme_ggeffects()
 
 
@@ -794,7 +795,7 @@ h7_b <- ggplot(data = Morning_PANAS_data) +
   geom_point(mapping = aes(x = Sleep_duration_last_night, y = Morning_PANAS_neg), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = Sleep_duration_last_night, y = Morning_PANAS_neg))+
   labs(x = "Sleep duration last night", y = "Negative affect (PANAS)") +
-  ggtitle("B")+
+  ggtitle("b")+
   theme_ggeffects()
 
 # Crude model
@@ -813,7 +814,7 @@ h7_c <- ggplot(data = Morning_PANAS_data) +
   geom_point(mapping = aes(x = Sleep_efficiency, y = Morning_PANAS_neg), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = Sleep_efficiency, y = Morning_PANAS_neg))+
   labs(x = "Sleep efficiency last night", y = "Negative affect (PANAS)") +
-  ggtitle("C")+
+  ggtitle("c")+
   theme_ggeffects()
 
 # Crude model
@@ -835,7 +836,7 @@ h7_d <- ggplot(data = Morning_PANAS_data) +
   geom_boxplot(mapping = aes(x = Sleep_quality_last_night, y = Morning_PANAS_pos), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = Sleep_quality_last_night, y = Morning_PANAS_pos))+
   labs(x = "Sleep quality last night", y = "Positive affect (PANAS)") +
-  ggtitle("D")+
+  ggtitle("d")+
   theme_ggeffects()
 
 
@@ -858,7 +859,7 @@ h7_e <- ggplot(data = Morning_PANAS_data) +
   geom_point(mapping = aes(x = Sleep_duration_last_night, y = Morning_PANAS_pos), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = Sleep_duration_last_night, y = Morning_PANAS_pos))+
   labs(x = "Sleep duration last night", y = "Positive affect (PANAS)") +
-  ggtitle("E")+
+  ggtitle("e")+
   theme_ggeffects()
 
 # Crude model
@@ -876,7 +877,7 @@ h7_f <- ggplot(data = Morning_PANAS_data) +
   geom_point(mapping = aes(x = Sleep_efficiency, y = Morning_PANAS_pos), size = 1)+
   geom_smooth(method = lm, formula = y~x, aes(x = Sleep_efficiency, y = Morning_PANAS_pos))+
   labs(x = "Sleep efficiency last night", y = "Positive affect (PANAS)") +
-  ggtitle("F")+
+  ggtitle("f")+
   theme_ggeffects()
 
 # Crude model
