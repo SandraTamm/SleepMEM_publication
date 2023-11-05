@@ -1,7 +1,7 @@
 # Cleaning word-pairs
 
 #Set this to the folder where you have the data
-setwd("/Users/sandratamm/Desktop/Data") # set as applicable
+setwd("Desktop/Data") # set as applicable
 
 
 # read all the spreadsheets in (immediate recall)

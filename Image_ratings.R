@@ -1,7 +1,7 @@
 library(plyr)
 
 #valence rating
-setwd("/Users/santam/Desktop/Data") # set as applicable
+setwd("~/Desktop/Data") # set as applicable
 getwd()
 
 ## All morning and evening assessments have 2 separate lists because of the randomiser
