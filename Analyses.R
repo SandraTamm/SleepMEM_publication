@@ -5,6 +5,7 @@ library(ggeffects)
 library(sjPlot)
 library(sjmisc)
 library(sjlabelled)
+require(sensemakr)
 
 load("~/Desktop/Data/wordpairs.RData")
 wordpairs <- data_out
@@ -47,6 +48,7 @@ tab_model(h1a_crude)
 h1a_adj <- lm(Correct_answers_evening ~ SCI + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = wordpairs)
 
 tab_model(h1a_adj)
+partial_f2(h1a_adj)
 
 # Sleep duration
 
@@ -64,7 +66,7 @@ tab_model(h1b_crude)
 # Adjusted model
 h1b_adj <- lm(Correct_answers_evening ~ Typical_sleep_duration + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = wordpairs)
 tab_model(h1b_adj)
-
+partial_f2(h1b_adj)
 
 # Sleep efficiency
 
@@ -84,6 +86,7 @@ tab_model(h1c_crude)
 # Adjusted model
 h1c_adj <- lm(Correct_answers_evening ~ Typical_sleep_efficiency + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = wordpairs)
 tab_model(h1c_adj)
+partial_f2(h1c_adj)
 
 grid.arrange(h1_a, h1_b, h1_c, ncol=1)
 
@@ -114,7 +117,7 @@ tab_model(h2a_crude)
 h2a_adj <-lm(Correct_answers_wordpairs_change ~ Sleep_quality_last_night_numeric + Correct_answers_evening + Age_numeric + Sex + Overall_health_numeric + 
              Education_numeric + Dementia_MCI, data = wordpairs)
 tab_model(h2a_adj)
-
+partial_f2(h2a_adj)
 
 
 # Sleep duration
@@ -134,11 +137,11 @@ h2_b <- ggplot(data = wordpairs) +
 h2b_crude <- lm(Correct_answers_wordpairs_change ~ Sleep_duration_last_night + Correct_answers_evening, data = wordpairs)
 tab_model(h2b_crude)
 
-
 # Adjusted model
 h2b_adj <- lm(Correct_answers_wordpairs_change ~ Sleep_duration_last_night + Correct_answers_evening + Age_numeric + Sex + Overall_health_numeric +
              Education_numeric + Dementia_MCI, data = wordpairs)
 tab_model(h2b_adj)
+partial_f2(h2b_adj)
 
 
 
@@ -165,7 +168,7 @@ h2c_adj <- lm(Correct_answers_wordpairs_change ~ Sleep_efficiency + Correct_answ
              Education_numeric + Dementia_MCI, data = wordpairs)
 
 tab_model(h2c_adj)
-
+partial_f2(h2c_adj)
 
 grid.arrange(h2_a, h2_b, h2_c, ncol=1)
 
@@ -193,6 +196,7 @@ tab_model(h3a_crude)
 h3a_adj <- lm(Valence_evening_negative ~ SCI + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = image_ratings)
 
 tab_model(h3a_adj)
+partial_f2(h3a_adj)
 
 # Sleep duration
 
@@ -210,6 +214,7 @@ tab_model(h3b_crude)
 # Adjusted model
 h3b_adj <- lm(Valence_evening_negative ~ Typical_sleep_duration + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = image_ratings)
 tab_model(h3b_adj)
+partial_f2(h3b_adj)
 
 
 # Sleep efficiency
@@ -229,6 +234,7 @@ tab_model(h3c_crude)
 # Adjusted model
 h3c_adj <- lm(Valence_evening_negative ~ Typical_sleep_efficiency + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = image_ratings)
 tab_model(h3c_adj)
+partial_f2(h3c_adj)
 
 grid.arrange(h3_a, h3_b, h3_c, ncol=1)
 
@@ -257,7 +263,7 @@ tab_model(h4aa_crude)
 h4aa_adj <-lm(Valence_morning_negative ~ Sleep_quality_last_night_numeric + Age_numeric + Sex + Overall_health_numeric + 
                Education_numeric + Dementia_MCI, data = image_ratings)
 tab_model(h4aa_adj)
-
+partial_f2(h4aa_adj)
 
 
 # Sleep duration
@@ -279,7 +285,7 @@ tab_model(h4ab_crude)
 h4ab_adj <- lm(Valence_morning_negative ~ Sleep_duration_last_night + Age_numeric + Sex + Overall_health_numeric +
                 Education_numeric + Dementia_MCI, data = image_ratings)
 tab_model(h4ab_adj)
-
+partial_f2(h4ab_adj)
 
 
 # Sleep efficiency
@@ -302,7 +308,7 @@ h4ac_adj <- lm(Valence_morning_negative ~ Sleep_efficiency + Age_numeric + Sex +
                 Education_numeric + Dementia_MCI, data = image_ratings)
 
 tab_model(h4ac_adj)
-
+partial_f2(h4ac_adj)
 
 ##and less overnight habituation for ratings of unpleasantness
 
@@ -325,6 +331,7 @@ tab_model(h4ba_crude)
 h4ba_adj <-lm(Valence_change_negative ~ Sleep_quality_last_night_numeric + Age_numeric + Sex + Overall_health_numeric + 
                 Education_numeric + Dementia_MCI, data = image_ratings)
 tab_model(h4ba_adj)
+partial_f2(h4ba_adj)
 
 
 
@@ -347,6 +354,8 @@ tab_model(h4bb_crude)
 h4bb_adj <- lm(Valence_change_negative ~ Sleep_duration_last_night + Age_numeric + Sex + Overall_health_numeric +
                  Education_numeric + Dementia_MCI, data = image_ratings)
 tab_model(h4bb_adj)
+partial_f2(h4bb_adj)
+
 
 
 
@@ -370,6 +379,7 @@ h4bc_adj <- lm(Valence_change_negative ~ Sleep_efficiency + Age_numeric + Sex + 
                  Education_numeric + Dementia_MCI, data = image_ratings)
 
 tab_model(h4bc_adj)
+partial_f2(h4bc_adj)
 
 
 
@@ -403,7 +413,7 @@ tab_model(h5aa_crude)
 h5aa_adj <-lm(d_prime_neg ~ Sleep_quality_last_night_numeric + Age_numeric + Sex + Overall_health_numeric + 
                 Education_numeric + Dementia_MCI, data = recall)
 tab_model(h5aa_adj)
-
+partial_f2(h5aa_adj)
 
 
 # Neutral
@@ -425,6 +435,7 @@ tab_model(h5ab_crude)
 h5ab_adj <-lm(d_prime_neu ~ Sleep_quality_last_night_numeric + Age_numeric + Sex + Overall_health_numeric + 
                Education_numeric + Dementia_MCI, data = recall)
 tab_model(h5ab_adj)
+partial_f2(h5ab_adj)
 
 
 # Sleep duration
@@ -447,6 +458,8 @@ tab_model(h5ba_crude)
 h5ba_adj <- lm(d_prime_neg ~ Sleep_duration_last_night + Age_numeric + Sex + Overall_health_numeric +
                  Education_numeric + Dementia_MCI, data = recall)
 tab_model(h5ba_adj)
+partial_f2(h5ba_adj)
+
 
 
 
@@ -469,7 +482,7 @@ tab_model(h5bb_crude)
 h5bb_adj <- lm(d_prime_neu ~ Sleep_duration_last_night + Age_numeric + Sex + Overall_health_numeric +
                  Education_numeric + Dementia_MCI, data = recall)
 tab_model(h5bb_adj)
-
+partial_f2(h5bb_adj)
 
 # Sleep efficiency
 # NEgative
@@ -492,7 +505,7 @@ h5ca_adj <- lm(d_prime_neg ~ Sleep_efficiency + Age_numeric + Sex + Overall_heal
                  Education_numeric + Dementia_MCI, data = recall)
 
 tab_model(h5ca_adj)
-
+partial_f2(h5ca_adj)
 
 # Neutral
 
@@ -514,7 +527,7 @@ h5cb_adj <- lm(d_prime_neu ~ Sleep_efficiency + Age_numeric + Sex + Overall_heal
                  Education_numeric + Dementia_MCI, data = recall)
 
 tab_model(h5cb_adj)
-
+partial_f2(h5cb_adj)
 
 grid.arrange(h5_aa, h5_ab, h5_ba, h5_bb, h5_ca, h5_cb)
 
@@ -639,6 +652,8 @@ tab_model(h6a_crude)
 h6a_adj <- lm(Evening_PANAS_neg ~ SCI + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 
 tab_model(h6a_adj)
+partial_f2(h6a_adj)
+
 
 # Sleep duration
 
@@ -656,7 +671,7 @@ tab_model(h6b_crude)
 # Adjusted model
 h6b_adj <- lm(Evening_PANAS_neg ~ Typical_sleep_duration + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 tab_model(h6b_adj)
-
+partial_f2(h6b_adj)
 
 # Sleep efficiency
 
@@ -676,6 +691,8 @@ tab_model(h6c_crude)
 # Adjusted model
 h6c_adj <- lm(Evening_PANAS_neg ~ Typical_sleep_efficiency + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 tab_model(h6c_adj)
+partial_f2(h6c_adj)
+
 
 # Positive affect
 h6_d <- ggplot(data = All_data) +
@@ -691,10 +708,12 @@ h6d_crude <- lm(Evening_PANAS_pos ~ SCI, data = All_data)
 
 tab_model(h6d_crude)
 
+
 # Adjusted model
 h6d_adj <- lm(Evening_PANAS_pos ~ SCI + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 
 tab_model(h6d_adj)
+partial_f2(h6d_adj)
 
 # Sleep duration
 
@@ -712,7 +731,7 @@ tab_model(h6e_crude)
 # Adjusted model
 h6e_adj <- lm(Evening_PANAS_pos ~ Typical_sleep_duration + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 tab_model(h6e_adj)
-
+partial_f2(h6e_adj)
 
 # Sleep efficiency
 
@@ -732,7 +751,7 @@ tab_model(h6f_crude)
 # Adjusted model
 h6f_adj <- lm(Evening_PANAS_pos ~ Typical_sleep_efficiency + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 tab_model(h6f_adj)
-
+partial_f2(h6f_adj)
 
 
 grid.arrange(h6_a, h6_b, h6_c, h6_d, h6_e, h6_f, ncol=2)
@@ -767,6 +786,7 @@ tab_model(h7a_crude)
 h7a_adj <- lm(Morning_PANAS_neg ~ Sleep_quality_last_night_numeric + Evening_PANAS_neg + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 
 tab_model(h7a_adj)
+partial_f2(h7a_adj)
 
 # Sleep duration
 
@@ -784,6 +804,7 @@ tab_model(h7b_crude)
 # Adjusted model
 h7b_adj <- lm(Morning_PANAS_neg ~ Sleep_duration_last_night + Evening_PANAS_neg + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 tab_model(h7b_adj)
+partial_f2(h7b_adj)
 
 
 # Sleep efficiency
@@ -804,9 +825,9 @@ tab_model(h7c_crude)
 # Adjusted model
 h7c_adj <- lm(Morning_PANAS_neg ~ Sleep_efficiency + Evening_PANAS_neg + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 tab_model(h7c_adj)
+partial_f2(h7c_adj)
 
 
-#### START FROM HERE
 
 
 # Positive affect
@@ -823,10 +844,13 @@ h7d_crude <- lm(Morning_PANAS_pos ~ Sleep_quality_last_night_numeric + Evening_P
 
 tab_model(h7d_crude)
 
+
 # Adjusted model
 h7d_adj <- lm(Morning_PANAS_pos ~ Sleep_quality_last_night_numeric + Evening_PANAS_pos + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 
 tab_model(h7d_adj)
+partial_f2(h7d_adj)
+
 
 # Sleep duration
 
@@ -844,7 +868,7 @@ tab_model(h7e_crude)
 # Adjusted model
 h7e_adj <- lm(Morning_PANAS_pos ~ Sleep_duration_last_night + Evening_PANAS_pos + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 tab_model(h7e_adj)
-
+partial_f2(h7e_adj)
 
 # Sleep efficiency
 
@@ -864,7 +888,7 @@ tab_model(h7f_crude)
 # Adjusted model
 h7f_adj <- lm(Morning_PANAS_pos ~ Sleep_efficiency + Evening_PANAS_pos + Age_numeric + Sex + Overall_health_numeric + Education_numeric + Dementia_MCI, data = All_data)
 tab_model(h7f_adj)
-
+partial_f2(h7f_adj)
 
 
 grid.arrange(h7_a, h7_b, h7_c, h7_d, h7_e, h7_f, ncol=2)
